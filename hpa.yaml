@@ -1,0 +1,13 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: taskmgmt
+  namespace: default
+spec:
+  scaleTargetRef:
+    apiVersion: taskmgmt/v1
+    kind: Deployment
+    name: taskmgmt
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 85
